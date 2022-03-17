@@ -1,3 +1,5 @@
+from prettytable import PrettyTable
+
 question_data = [
     {"text": "A slug's blood is green.", "answer": "True"},
     {"text": "The loudest animal is the African Elephant.", "answer": "False"},
@@ -14,3 +16,19 @@ question_data = [
     {"text": "No piece of square dry paper can be folded in half more than 7 times.", "answer": "False"},
     {"text": "A few ounces of chocolate can to kill a small dog.", "answer": "True"}
 ]
+
+
+def show_data():
+    """This command helps to show our questions and their answers in table"""
+    table = PrettyTable()
+    table.field_names = ["Questions", "Answers"]
+    table._max_width = {"Questions": 50, "Answers": 25}
+    table.align = "l"
+    table.valign = "m"
+    for data in question_data:
+        table.border = True
+        table.add_row([data['text'], data['answer']])
+        table.add_row(["-" * 50, "-" * 25])
+
+    print(table)
+
